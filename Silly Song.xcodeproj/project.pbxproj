@@ -54,14 +54,22 @@
 		875C803A1F261157005539C2 /* Silly Song */ = {
 			isa = PBXGroup;
 			children = (
-				875C803B1F261157005539C2 /* AppDelegate.swift */,
+				875C804D1F261170005539C2 /* Supprt Files */,
 				875C803D1F261157005539C2 /* ViewController.swift */,
 				875C803F1F261157005539C2 /* Main.storyboard */,
+			);
+			path = "Silly Song";
+			sourceTree = "<group>";
+		};
+		875C804D1F261170005539C2 /* Supprt Files */ = {
+			isa = PBXGroup;
+			children = (
+				875C803B1F261157005539C2 /* AppDelegate.swift */,
 				875C80421F261157005539C2 /* Assets.xcassets */,
 				875C80441F261157005539C2 /* LaunchScreen.storyboard */,
 				875C80471F261157005539C2 /* Info.plist */,
 			);
-			path = "Silly Song";
+			name = "Supprt Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
