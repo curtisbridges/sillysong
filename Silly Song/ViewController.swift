@@ -13,17 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var lyricsView: UITextView!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
     @IBAction func reset(_ sender: Any) {
         nameField.text = ""
@@ -33,7 +26,7 @@ class ViewController: UIViewController {
     @IBAction func displayLyrics(_ sender: Any) {
         if let name = nameField.text {
             let trimmed = name.trimmingCharacters(in: CharacterSet.whitespaces)
-            if trimmed != "" {
+            if !trimmed.isEmpty {
                 lyricsView.text = lyricsForName(lyricsTemplate: bananaFanaTemplate, fullName: trimmed)
             }
         }
@@ -56,14 +49,14 @@ func shortNameFromName(name: String) -> String {
 
     if let range = lowercase.rangeOfCharacter(from: vowels) {
         return lowercase.substring(from: range.lowerBound)
-    } else {
-        return lowercase
     }
+
+    return lowercase
 }
 
 // just define constants for the template variables
-let FULLNAME = "<FULL_NAME>"
-let SHORTNAME = "<SHORT_NAME>"
+let fullNameVariable = "<FULL_NAME>"
+let shortNameVariable = "<SHORT_NAME>"
 
 // join an array of strings into a single template string:
 let bananaFanaTemplate = [
@@ -74,5 +67,5 @@ let bananaFanaTemplate = [
 
 
 func lyricsForName(lyricsTemplate: String, fullName: String) -> String {
-    return lyricsTemplate.replacingOccurrences(of: FULLNAME, with: fullName).replacingOccurrences(of: SHORTNAME, with: shortNameFromName(name: fullName))
+    return lyricsTemplate.replacingOccurrences(of: fullNameVariable, with: fullName).replacingOccurrences(of: shortNameVariable, with: shortNameFromName(name: fullName))
 }
